@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+</head>
+<body>
+{% block main %}
+ <h1>Welcome to the new shop</h1>
+<form>
+    <label>filter the result by:</label>
+    <select id="sorter" data-role="sorter" class="sorter-options">
+        <option value="position" selected="selected">Name</option>
+        <option value="price">Id</option>
+        <option value="price">Category</option>
+    </select>
+</form>
+<br>
+    <form >
+        <label>Value:</label>
+        <input type="text" id="fname" name="fname">
+            <br><br>
+        <input type="submit" value="Submit">
+    </form>
+<br><br>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="/static/imgs/macpc.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Mac pc</h5>
+      <p class="card-text"></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="/static/imgs/dell.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Dell pc</h5>
+      <p class="card-text"></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="/static/imgs/britta.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Brita</h5>
+      <p class="card-text"></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
