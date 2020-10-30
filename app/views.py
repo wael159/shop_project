@@ -5,7 +5,6 @@ import flask
 from app import app
 from app import forms
 from app import db
-from app.models import all_products
 from app.models import User
 from app.models import books
 import flask_login
