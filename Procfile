@@ -1,1 +1,1 @@
-web: run this thing 
+gitweb: run this thing
