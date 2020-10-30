@@ -10,7 +10,7 @@
 
 
 {% block main %}
-    <h1>Products:</h1>
+    <h1>Books:</h1>
  <table border='1'>
     <thead>
      <tr>
@@ -29,6 +29,8 @@
         <td>{{ row.price }}</td>
         <td>{{ row.stock_quantity }}</td>
         <td>{{ row.category }}</td>
+        <td>{{ row.author_name }}</td>
+        <td>{{ row.year }}</td>
     </tr>
     {% endfor %}
 {% endblock %}
