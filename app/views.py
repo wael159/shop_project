@@ -20,7 +20,7 @@ def index():
 
 @app.route('/ListView')
 def show():
-    from app.models import all_products
+    from app.models import books
     rows = all_products.query.all()
     return flask.render_template('overview.html',
                             title='Overview',
