@@ -1,28 +1,3 @@
-products = [
-    {
-        "id":1,
-        "name": "Macbook Pro",
-        "price": 1000.99,
-        "stock_quantity": 3,
-        "category": "technology",
-        "pic":"static/imgs/macpc.jpg"
-    },
-    {
-        "id":2,
-        "name": "Dell Laptop",
-        "price": 899.99,
-        "stock_quantity": 5,
-        "category": "technology",
-        "pic":"static/imgs/dell.jpg"
-    },
-    {
-        "id":3,
-        "name": "Brita Water filter",
-        "price": 39.00,
-        "stock_quantity": 2,
-        "category": "kitchen",
-        "pic":"static/imgs/britta.jpg"
-    }]
 
 from app import db
 import flask_login
@@ -30,13 +5,13 @@ import werkzeug
 from sqlalchemy.ext.hybrid import hybrid_property
 from app.utils import ModelMixin
 
-class all_products(db.Model): # SQL Table
+#class all_products(db.Model): # SQL Table
     # Create attributes (SQL columns)
-    id = db.Column(db.Integer(), primary_key=True) # By default autoincremented
-    name = db.Column(db.String(64))
-    price  = db.Column(db.Integer())
-    stock_quantity = db.Column(db.Integer())
-    category=db.Column(db.String(64))
+#    id = db.Column(db.Integer(), primary_key=True) # By default autoincremented
+#    name = db.Column(db.String(64))
+#    price  = db.Column(db.Integer())
+#    stock_quantity = db.Column(db.Integer())
+#    category=db.Column(db.String(64))
 
 
 class books(db.Model,ModelMixin): # SQL Table
