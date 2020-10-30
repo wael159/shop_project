@@ -23,7 +23,7 @@ class books(db.Model,ModelMixin): # SQL Table
     category=db.Column(db.String(64))
     description=db.Column(db.String(64))
     author_name=db.Column(db.String(64))
-    year=db.column(db.DateTime)
+    year=db.column(db.String(64))
 
 
 

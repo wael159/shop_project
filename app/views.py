@@ -83,7 +83,6 @@ def querys():
                 form_test = list(books.query.filter_by(year=int(form.value.data)).all())
             return flask.render_template("overview.html", rows=form_test)
 
-
         else:
             print("Form errors:", form.errors)
 
