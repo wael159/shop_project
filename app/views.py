@@ -44,7 +44,8 @@ def signup():
     else:
         print("Form errors:", form.errors)
 
-    return flask.render_template("signup.html", form=form)
+    #return flask.render_template("signup.html", form=form)
+    return flask.render_template("signup_new.html", form=form)
 
 
 @app.route("/sign-in", methods=["GET", "POST"])
@@ -55,7 +56,8 @@ def signin():
         print(user)
         if user:
             return flask.redirect('/')
-    return flask.render_template("signin.html", form=form)
+    #return flask.render_template("signin.html", form=form)
+    return flask.render_template("new_login.html", form=form)
 
 
 @app.route("/sign-out")
@@ -145,6 +147,14 @@ def edit(id):
 
 
 
+# delete item
+@app.route('/deleteItem/<int:id>',methods=["GET", "POST"])
+def delete_item(id):
+    books.query.filter_by(id=id).delete()
+    return flask.redirect('/')
+
+
+
 
 @app.route("/search-user")
 def userSearch():
@@ -161,3 +171,4 @@ def userSearch():
         print(query_form.errors)
 
     return flask.render_template("searchUser.html", title="My awesome app", title2="Awesome app", form=query_form)
+
