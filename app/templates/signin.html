@@ -1,31 +1,46 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
 
-{% block main %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="/static/assets_login/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets_login/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/static/assets_login/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="/static/assets_login/css/styles.css">
+</head>
 
-    <form action="" novalidate method="post">
+<body>
+    <div class="login-clean">
+         <form action="" novalidate method="post">
+                 {{ form.hidden_tag() }}
+                <h2 class="sr-only">Login Form</h2>
+                <div class="illustration"><i class="icon ion-ios-book" style="color: rgb(71,140,244);"></i></div>
 
-        {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label }}
+                {{ form.username(class="form-control") }}
 
-        <div>
-            {{ form.username.label }}
-            {{ form.username(class="form-control") }}
+                {% for error in form.username.errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+            </div>
 
-            {% for error in form.username.errors %}
-                <small>{{ error }}</small>
-            {% endfor %}
-        </div>
+            <div>
+                {{ form.password.label }}
+                {{ form.password(class="form-control") }}
 
-        <div>
-            {{ form.password.label }}
-            {{ form.password(class="form-control") }}
+                {% for error in form.password.errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+            </div>
 
-            {% for error in form.password.errors %}
-                <small>{{ error }}</small>
-            {% endfor %}
-        </div>
+            {{ form.submit(class="form-control" , style="background: rgb(71,151,244);") }}
+         </form>
+    </div>
+    <script src="/static/assets_login/js/jquery.min.js"></script>
+    <script src="/static/assets_login/bootstrap/js/bootstrap.min.js"></script>
+</body>
 
-        {{ form.submit(class="form-control") }}
-    </form>
-
-
-{% endblock %}
+</html>
