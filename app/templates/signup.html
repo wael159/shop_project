@@ -17,6 +17,15 @@
         </div>
 
         <div>
+            {{ form.email.label }}
+            {{ form.email(class="form-control") }}
+
+            {% for error in form.email.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div>
             {{ form.password.label }}
             {{ form.password(class="form-control") }}
 

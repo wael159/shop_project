@@ -23,7 +23,7 @@ class books(db.Model,ModelMixin): # SQL Table
     category=db.Column(db.String(64))
     description=db.Column(db.String(64))
     author_name=db.Column(db.String(64))
-    year=db.column(db.String(64))
+    publish_year = db.Column(db.String(64))
 
 
 
@@ -33,6 +33,7 @@ class User(db.Model, ModelMixin, flask_login.UserMixin): # SQL Table
     # Create attributes (SQL columns)
     id = db.Column(db.Integer(), primary_key=True)  # By default autoincremented
     name             = db.Column(db.String(64), nullable=False)
+    email=db.Column(db.String(64)) # ADDED TO DB
     _password_hash    = db.Column(db.String(256))
 
     @classmethod

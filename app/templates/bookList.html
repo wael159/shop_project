@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block main %}
+<h1>Books:</h1>
+    <table border='1'>
+        <thead>
+         <tr>
+           <th>ID</th>
+           <th>Name</th>
+           <th>Price</th>
+           <th>Quantity</th>
+             <th>Category</th>
+             <th>author_name</th>
+             <th>year</th>
+         </tr>
+        </thead>
+
+  {% for row in rows %}
+    <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.name }}</td>
+        <td>{{ row.price }}</td>
+        <td>{{ row.stock_quantity }}</td>
+        <td>{{ row.category }}</td>
+        <td>{{ row.author_name }}</td>
+        <td>{{ row.publish_year }}</td>
+    </tr>
+    {% endfor %}
+{% endblock %}

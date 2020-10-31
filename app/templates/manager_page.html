@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block main %}
-
+<h1>Adding new books:</h1>
     <form action="" novalidate method="post">
 
         {{ form.hidden_tag() }}
@@ -61,10 +61,10 @@
         </div>
 
         <div>
-            {{ form.year.label }}
-            {{ form.year(class="form-control") }}
+            {{ form.publish_year.label }}
+            {{ form.publish_year(class="form-control") }}
 
-            {% for error in form.year.errors %}
+            {% for error in form.publish_year.errors %}
                 <small>{{ error }}</small>
             {% endfor %}
         </div>

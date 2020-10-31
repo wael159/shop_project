@@ -21,7 +21,8 @@
                     <a class="nav-item nav-link disabled"> Welcome {{ current_user.name }} !</a>
                     <a class="nav-item nav-link " href="{{ url_for('signout') }}">sign out</a>
                     <a class="nav-item nav-link " href="/search-query">Search</a>
-                    <a class="nav-item nav-link " href="/ListView">Product List</a>
+                    <a class="nav-item nav-link " href="/Books">Books List</a>
+                    <a class="nav-item nav-link " href="/manager-page">Manager page</a>
               {% else %}
               <a class="nav-item nav-link" href="{{ url_for('signin') }}">Sign in</a>
               <a class="nav-item nav-link" href="{{ url_for('signup') }}">Sign up</a>
@@ -30,6 +31,16 @@
           </ul>
         </nav>
     {% endblock %}
+
+    {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+    {% endwith %}
 
     <div class="container">
 
@@ -48,7 +59,7 @@
                 <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-        <p class="copyright">Company Name © 2017</p>
+        <p class="copyright">Company Name © 2020</p>
         </footer>
     </div>
 </body>
