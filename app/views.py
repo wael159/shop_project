@@ -45,7 +45,7 @@ def signup():
         print("Form errors:", form.errors)
 
     #return flask.render_template("signup.html", form=form)
-    return flask.render_template("signup_new.html", form=form)
+    return flask.render_template("signup.html", form=form)
 
 
 @app.route("/sign-in", methods=["GET", "POST"])
@@ -57,7 +57,7 @@ def signin():
         if user:
             return flask.redirect('/')
     #return flask.render_template("signin.html", form=form)
-    return flask.render_template("new_login.html", form=form)
+    return flask.render_template("signin.html", form=form)
 
 
 @app.route("/sign-out")
