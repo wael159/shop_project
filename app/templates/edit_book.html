@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Editting books:</h1>
+    <form action="" novalidate method="post">
+
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.name.label }}
+            {{ form.name(class="form-control") }}
+
+            {% for error in form.name.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.price.label }}
+            {{ form.price(class="form-control") }}
+
+            {% for error in form.price.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.stock_quantity.label }}
+            {{ form.stock_quantity(class="form-control") }}
+
+            {% for error in form.stock_quantity.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.category.label }}
+            {{ form.category(class="form-control") }}
+
+            {% for error in form.category.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.description.label }}
+            {{ form.description(class="form-control") }}
+
+            {% for error in form.description.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+
+        <div>
+            {{ form.author_name.label }}
+            {{ form.author_name(class="form-control") }}
+
+            {% for error in form.author_name.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.publish_year.label }}
+            {{ form.publish_year(class="form-control") }}
+
+            {% for error in form.publish_year.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
+
+        {{ form.submit(class="form-control") }}
+    </form>
+
+
+{% endblock %}
