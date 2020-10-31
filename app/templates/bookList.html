@@ -26,6 +26,7 @@
         <td>{{ row.description }}</td>
         <td>{{ row.author_name }}</td>
         <td>{{ row.publish_year }}</td>
+        <td><a href="editItem/{{ row.id }}">edit</a></td>
     </tr>
     {% endfor %}
 {% endblock %}
