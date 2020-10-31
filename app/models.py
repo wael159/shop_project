@@ -4,6 +4,7 @@ import flask_login
 import werkzeug
 from sqlalchemy.ext.hybrid import hybrid_property
 from app.utils import ModelMixin
+from flask_table import table,Col,LinkCol
 
 #class all_products(db.Model): # SQL Table
     # Create attributes (SQL columns)
@@ -58,4 +59,7 @@ class User(db.Model, ModelMixin, flask_login.UserMixin): # SQL Table
 
     def __repr__(self):
         return f"<User {self.id}-{self.name}>"
+
+
+
 

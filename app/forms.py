@@ -2,6 +2,7 @@ import flask_wtf
 import wtforms
 from wtforms import validators as vld
 
+
 class SignupForm(flask_wtf.FlaskForm):
 
     username = wtforms.StringField("Name:", validators=[vld.DataRequired()])
@@ -30,10 +31,10 @@ class Add_books(flask_wtf.FlaskForm):
     price = wtforms.StringField("Price:", validators=[vld.DataRequired()])
     stock_quantity   = wtforms.StringField("stock quantity", validators=[vld.DataRequired()])
     category=wtforms.StringField("Category:", validators=[vld.DataRequired()])
-    description = wtforms.StringField("description:", validators=[vld.DataRequired()])
+    description = wtforms.TextAreaField("description:", validators=[vld.DataRequired()])
     author_name = wtforms.StringField("author_name:", validators=[vld.DataRequired()])
     publish_year = wtforms.StringField("publish_year:", validators=[vld.DataRequired()])
-    submit=wtforms.SubmitField("Add book")
+    submit=wtforms.SubmitField("Submit")
 
 
 class search_user(flask_wtf.FlaskForm):
@@ -41,3 +42,5 @@ class search_user(flask_wtf.FlaskForm):
                                    validators=[vld.DataRequired()])
     value=wtforms.StringField("value:", validators=[vld.DataRequired()])
     submit   = wtforms.SubmitField("Search")
+
+

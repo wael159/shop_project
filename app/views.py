@@ -9,6 +9,7 @@ from app.models import User
 from app.models import books
 import flask_login
 from flask import flash
+from flask import request
 
 
 @app.route("/")
@@ -114,6 +115,36 @@ def secret():
         print("Form errors:", form.errors)
 
     return flask.render_template("manager_page.html", form=form)
+
+
+#edit data
+@app.route('/editItem/<int:id>', methods=["GET", "POST"])
+def edit(id):
+    from app.models import books
+    qry=books.query.filter(books.id==id)
+    result=qry.first()
+    if result:
+        form=forms.Add_books(formdata=request.form,obj=result)
+        if flask.request.method == "POST":
+            if form.validate_on_submit():
+                book = books()
+                book.name = form.name.data
+                book.price = form.price.data
+                book.stock_quantity = form.stock_quantity.data
+                book.category = form.category.data
+                book.author_name = form.author_name.data
+                book.publish_year = form.publish_year.data
+                book.update()
+
+                flash('book updated successfully')
+                return flask.redirect('/')
+        else:
+            print("Form errors:", form.errors)
+
+    return flask.render_template("edit_book.html", form=form)
+
+
+
 
 @app.route("/search-user")
 def userSearch():
