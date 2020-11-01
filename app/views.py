@@ -107,6 +107,7 @@ def secret():
             book.stock_quantity = form.stock_quantity.data
             book.category = form.category.data
             book.author_name = form.author_name.data
+            book.description = form.description.data
             book.publish_year = form.publish_year.data
             book.save()
             flash('the book were added successfully')
@@ -129,14 +130,14 @@ def edit(id):
         form=forms.Add_books(formdata=request.form,obj=result)
         if flask.request.method == "POST":
             if form.validate_on_submit():
-                book = books()
-                book.name = form.name.data
-                book.price = form.price.data
-                book.stock_quantity = form.stock_quantity.data
-                book.category = form.category.data
-                book.author_name = form.author_name.data
-                book.publish_year = form.publish_year.data
-                book.update()
+                result.name = form.name.data
+                result.price = form.price.data
+                result.stock_quantity = form.stock_quantity.data
+                result.category = form.category.data
+                result.author_name = form.author_name.data
+                result.description = form.description.data
+                result.publish_year = form.publish_year.data
+                result.update()
 
                 flash('book updated successfully')
                 return flask.redirect('/')
@@ -150,7 +151,9 @@ def edit(id):
 # delete item
 @app.route('/deleteItem/<int:id>',methods=["GET", "POST"])
 def delete_item(id):
-    books.query.filter_by(id=id).delete()
+    qry=books.query.filter(books.id==id).first()
+    qry.delete()
+    flash('book deleted successfully')
     return flask.redirect('/')
 
 
