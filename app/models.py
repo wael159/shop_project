@@ -31,6 +31,7 @@ class User(db.Model, ModelMixin, flask_login.UserMixin): # SQL Table
     name             = db.Column(db.String(64), nullable=False)
     email=db.Column(db.String(64)) # ADDED TO DB
     _password_hash    = db.Column(db.String(256))
+    is_admin=db.Column(db.BOOLEAN(),default=False)
 
     @classmethod
     def login_user(cls, name, pwd):
