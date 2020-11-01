@@ -4,15 +4,8 @@ import flask_login
 import werkzeug
 from sqlalchemy.ext.hybrid import hybrid_property
 from app.utils import ModelMixin
-from flask_table import table,Col,LinkCol
 
-#class all_products(db.Model): # SQL Table
-    # Create attributes (SQL columns)
-#    id = db.Column(db.Integer(), primary_key=True) # By default autoincremented
-#    name = db.Column(db.String(64))
-#    price  = db.Column(db.Integer())
-#    stock_quantity = db.Column(db.Integer())
-#    category=db.Column(db.String(64))
+
 
 
 class books(db.Model,ModelMixin): # SQL Table
