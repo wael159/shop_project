@@ -11,6 +11,7 @@ from app.utils import ModelMixin
 class books(db.Model,ModelMixin): # SQL Table
     # Create attributes (SQL columns)
      # By default autoincremented
+
     name = db.Column(db.String(64))
     price  = db.Column(db.Integer())
     stock_quantity = db.Column(db.Integer())
@@ -18,6 +19,7 @@ class books(db.Model,ModelMixin): # SQL Table
     description=db.Column(db.String(64))
     author_name=db.Column(db.String(64))
     publish_year = db.Column(db.String(64))
+    picture_path=db.Column(db.String(64))
 
 
 
@@ -54,5 +56,11 @@ class User(db.Model, ModelMixin, flask_login.UserMixin): # SQL Table
         return f"<User {self.id}-{self.name}>"
 
 
+class order(db.Model, ModelMixin):  # SQL Table
+    # Create attributes (SQL columns)
+    # By default autoincremented
+    book_id=db.Column(db.Integer, db.ForeignKey('books.id'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    quantity = db.Column(db.Integer())
 
 

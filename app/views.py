@@ -109,6 +109,7 @@ def secret():
             book.author_name = form.author_name.data
             book.description = form.description.data
             book.publish_year = form.publish_year.data
+            book.picture_path = form.picture_path.data
             book.save()
             flash('the book were added successfully')
             print(book)
@@ -137,6 +138,7 @@ def edit(id):
                 result.author_name = form.author_name.data
                 result.description = form.description.data
                 result.publish_year = form.publish_year.data
+                result.picture_path = form.picture_path.data
                 result.update()
 
                 flash('book updated successfully')

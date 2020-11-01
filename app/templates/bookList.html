@@ -13,6 +13,7 @@
              <th>Description</th>
              <th>author_name</th>
              <th>year</th>
+             <th>picture path</th>
          </tr>
         </thead>
 
@@ -26,6 +27,7 @@
         <td>{{ row.description }}</td>
         <td>{{ row.author_name }}</td>
         <td>{{ row.publish_year }}</td>
+        <td>{{ row.picture_path }}</td>
         <td><a href="editItem/{{ row.id }}"><button type="button">Edit</button></a></td>
         <td><a href="deleteItem/{{ row.id }}"><button type="button">Delete</button></a></td>
     </tr>

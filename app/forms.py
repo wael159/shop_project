@@ -34,6 +34,7 @@ class Add_books(flask_wtf.FlaskForm):
     description = wtforms.TextAreaField("description:", validators=[vld.DataRequired()])
     author_name = wtforms.StringField("author_name:", validators=[vld.DataRequired()])
     publish_year = wtforms.StringField("publish_year:", validators=[vld.DataRequired()])
+    picture_path = wtforms.StringField("picture_path:", validators=[vld.DataRequired()])
     submit=wtforms.SubmitField("Submit")
 
 

@@ -69,6 +69,15 @@
             {% endfor %}
         </div>
 
+        <div>
+            {{ form.picture_path.label }}
+            {{ form.picture_path(class="form-control") }}
+
+            {% for error in form.picture_path.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+
 
         {{ form.submit(class="form-control") }}
     </form>
