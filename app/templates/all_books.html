@@ -21,8 +21,8 @@
         <td>{{ row.category }}</td>
         <td>{{ row.description }}</td>
         <td>{{ row.author_name }}</td>
-        <td>{{ row.publish_year }}</td>
-        <td><img src="static/imgs/{{ row.picture_path | default('profile.jpg') }}" alt={{ row.name }}></td>
+        <td>{{ row.publish_year}}</td>
+        <td><img src="static/landing_page/images/{{ row.picture_path | default('profile.jpg') }}" alt={{ row.name }}></td>
         <td><a href="/add_order/{{row.id}}"><button type="button">Add to card</button></a></td>
     </tr>
     {% endfor %}

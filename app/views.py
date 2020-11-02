@@ -19,7 +19,8 @@ admin.add_view(MyModelView(User, db.session))
 @app.route("/index.html")
 @app.route("/home")
 def index():
-    return flask.render_template("index.html", title="My awesome app", title2="Awesome app")
+    rows = books.query.all()
+    return flask.render_template("index.html", rows=rows)
 
 
 @app.route("/booksLi.html")
@@ -93,7 +94,7 @@ def querys():
 
             elif value=="year":
                 form_test = list(books.query.filter_by(publish_year=form.value.data).all())
-            return flask.render_template("booksLi.html", rows=form_test)
+            return flask.render_template("bookList.html", rows=form_test)
 
         else:
             print("Form errors:", form.errors)
@@ -118,12 +119,11 @@ def add_order(id):
     user.new_books.append(book)
     user.save()
     flash('the book were added successfully')
-    return flask.render_template("all_books.html") #TODO we must redirect to the same page
+    return flask.render_template("card_items.html") #TODO we must redirect to the same page
 
 @app.route('/delete_order/<int:id>',methods=["GET", "POST"])
 @flask_login.login_required
 def edit_order(id):
-    from app.models import order
     order=Orders.query.get(id)
     order.delete()
     flash('the book were deleted successfully')
@@ -135,7 +135,6 @@ def edit_order(id):
 @app.route('/card_items/<int:id>',methods=["GET", "POST"])
 @flask_login.login_required
 def UserCard_items(id):
-    from app.models import order
     user = User.query.get(id)
     user_book = user.new_books
     orders = db.session.query(Orders).filter_by(user_id = id).all()
