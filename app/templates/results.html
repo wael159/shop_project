@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Orders</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="/static/landing_page/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="/static/landing_page/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="/static/landing_page/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="/static/landing_page/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="/static/landing_page/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+<br><br>
+   <tbody>
+   <h1> <span class="blu">Welcome <br></span>Search Results</h1>
+  {% for row in rows %}
+      <div class="glasses"> <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                  <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/static/landing_page/images/{{ row.picture_path}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><span class="blu">Price</span>$:{{ row.price}}</h5>
+      <p class="card-text">Book Name :{{ row.name }}</p>
+      <p class="card-text"> Category :{{ row.category }}</p>
+      <p class="card-text">Order Id:{{ row.author_name  }}</p>
+      <p class="card-text">Description:{{ row.description  }}</p>
+    <a href="/add_order/{{ rows.id}}" class="btn btn-primary">Add to card</a>
+  </div>
+</div>
+
+
+        </div></div>
+
+    {% endfor %}
+</tbody>
+</html>
