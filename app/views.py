@@ -68,7 +68,7 @@ def signin():
     return flask.render_template("signin.html", form=form)
 
 
-@app.route("/sign-out")
+@app.route("/signout")
 def signout():
     flask_login.logout_user()
     return flask.redirect('/')
@@ -119,7 +119,7 @@ def add_order(id):
     user.new_books.append(book)
     user.save()
     flash('the book were added successfully')
-    return flask.render_template("card_items.html") #TODO we must redirect to the same page
+    return flask.redirect(request.referrer) #TODO we must redirect to the same page
 
 @app.route('/delete_order/<int:id>',methods=["GET", "POST"])
 @flask_login.login_required
