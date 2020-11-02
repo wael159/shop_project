@@ -1,4 +1,3 @@
-
 import flask
 
 #import app as app # The directory where the file is currently (here is app/)
@@ -6,11 +5,15 @@ from app import app
 from app import forms
 from app import db
 from app.models import User
-from app.models import books
+from app.models import books,Orders
 import flask_login
 from flask import flash
 from flask import request
+from app import db, admin
+from app.models import  MyModelView
 
+admin.add_view(MyModelView(books, db.session))
+admin.add_view(MyModelView(User, db.session))
 
 @app.route("/")
 @app.route("/index.html")
@@ -19,15 +22,20 @@ def index():
     return flask.render_template("index.html", title="My awesome app", title2="Awesome app")
 
 
-
-@app.route('/Books')
+@app.route("/booksLi.html")
+@app.route("/list")
 def show():
     from app.models import books
     rows = books.query.all()
-    return flask.render_template('bookList.html',
+    return flask.render_template('booksLi.html',
                             title='Overview',
                             rows=rows)
 
+@app.route("/contact")
+def contact():
+    return flask.render_template('contact.html',
+                            title='',
+                            rows= '')
 
 @app.route("/sign-up", methods=["GET", "POST"])
 def signup():
@@ -48,7 +56,7 @@ def signup():
     return flask.render_template("signup.html", form=form)
 
 
-@app.route("/sign-in", methods=["GET", "POST"])
+@app.route("/signin", methods=["GET", "POST"])
 def signin():
     form = forms.SigninForm()
     if form.validate_on_submit():
@@ -56,7 +64,6 @@ def signin():
         print(user)
         if user:
             return flask.redirect('/')
-    #return flask.render_template("signin.html", form=form)
     return flask.render_template("signin.html", form=form)
 
 
@@ -66,7 +73,7 @@ def signout():
     return flask.redirect('/')
 
 #searching books by name/category/id/author/year
-@app.route("/search-query", methods=["GET", "POST"])
+@app.route("/search", methods=["GET", "POST"])
 def querys():
     form = forms.searchquery()
     if flask.request.method == "POST":
@@ -86,94 +93,54 @@ def querys():
 
             elif value=="year":
                 form_test = list(books.query.filter_by(publish_year=form.value.data).all())
-            return flask.render_template("bookList.html", rows=form_test)
+            return flask.render_template("booksLi.html", rows=form_test)
 
         else:
             print("Form errors:", form.errors)
 
-    return flask.render_template("search_by.html", form=form)
-
-#manage page - can add new books
-@app.route("/manager-page", methods=["GET", "POST"])
-@flask_login.login_required
-def secret():
-    #return "You reached the secret page !"
-    form = forms.Add_books()
-    if flask.request.method == "POST":
-        if form.validate_on_submit():
-            book = books()
-            book.name= form.name.data
-            book.price = form.price.data
-            book.stock_quantity = form.stock_quantity.data
-            book.category = form.category.data
-            book.author_name = form.author_name.data
-            book.description = form.description.data
-            book.publish_year = form.publish_year.data
-            book.picture_path = form.picture_path.data
-            book.save()
-            flash('the book were added successfully')
-            print(book)
-            #return flask.redirect('/')
-            return flask.redirect('/')
-    else:
-        print("Form errors:", form.errors)
-
-    return flask.render_template("manager_page.html", form=form)
+    return flask.render_template("search.html", form=form)
 
 
-#edit data
-@app.route('/editItem/<int:id>', methods=["GET", "POST"])
-def edit(id):
+#def add_toCard():
+@app.route('/all_books')
+def all_books():
     from app.models import books
-    qry=books.query.filter(books.id==id)
-    result=qry.first()
-    if result:
-        form=forms.Add_books(formdata=request.form,obj=result)
-        if flask.request.method == "POST":
-            if form.validate_on_submit():
-                result.name = form.name.data
-                result.price = form.price.data
-                result.stock_quantity = form.stock_quantity.data
-                result.category = form.category.data
-                result.author_name = form.author_name.data
-                result.description = form.description.data
-                result.publish_year = form.publish_year.data
-                result.picture_path = form.picture_path.data
-                result.update()
+    rows = books.query.all()
+    return flask.render_template('all_books.html',
+                            title='Overview',
+                            rows=rows)
 
-                flash('book updated successfully')
-                return flask.redirect('/')
-        else:
-            print("Form errors:", form.errors)
+@app.route('/add_order/<int:id>',methods=["GET", "POST"])
+@flask_login.login_required
+def add_order(id):
+    book=books.query.get(id)
+    user = User.query.get(flask_login.current_user.id)
+    user.new_books.append(book)
+    user.save()
+    flash('the book were added successfully')
+    return flask.render_template("all_books.html") #TODO we must redirect to the same page
 
-    return flask.render_template("edit_book.html", form=form)
-
-
-
-# delete item
-@app.route('/deleteItem/<int:id>',methods=["GET", "POST"])
-def delete_item(id):
-    qry=books.query.filter(books.id==id).first()
-    qry.delete()
-    flash('book deleted successfully')
-    return flask.redirect('/')
+@app.route('/delete_order/<int:id>',methods=["GET", "POST"])
+@flask_login.login_required
+def edit_order(id):
+    from app.models import order
+    order=Orders.query.get(id)
+    order.delete()
+    flash('the book were deleted successfully')
+    return flask.render_template("all_books.html", title="My awesome app", title2="Awesome app") #TODO we must redirect to the same page
 
 
 
+# taking the id of the current_user
+@app.route('/card_items/<int:id>',methods=["GET", "POST"])
+@flask_login.login_required
+def UserCard_items(id):
+    from app.models import order
+    user = User.query.get(id)
+    user_book = user.new_books
+    orders = db.session.query(Orders).filter_by(user_id = id).all()
+    #order_list=user_book.join(Orders,Orders.user_id==id).add_columns(user_book.id,user_book.name)
+    return flask.render_template("card_items.html",rows=zip(user_book,orders) )#TODO we must redirect to the same page
 
-@app.route("/search-user")
-def userSearch():
-    query_form = forms.search_user()
-    if query_form.validate_on_submit():
-        value = str(dict(query_form.searchby.choices).get(query_form.searchby.data))
-        if value == "name":
-            form_test = list(User.query.filter_by(name=str(query_form.value.data)).all())
 
-        elif value == "email":
-            form_test = list(User.query.filter_by(email=str(query_form.value.data)).all())
-        return flask.render_template("userList.html", rows=form_test)
-    else:
-        print(query_form.errors)
-
-    return flask.render_template("searchUser.html", title="My awesome app", title2="Awesome app", form=query_form)
 

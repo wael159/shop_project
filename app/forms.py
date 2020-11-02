@@ -25,17 +25,17 @@ class SigninForm(flask_wtf.FlaskForm):
     submit   = wtforms.SubmitField("Sign in")
 
 # just for the manager to add new books to the store
-class Add_books(flask_wtf.FlaskForm):
+#class Add_books(flask_wtf.FlaskForm):
 
-    name = wtforms.StringField("Name:", validators=[vld.DataRequired()])
-    price = wtforms.StringField("Price:", validators=[vld.DataRequired()])
-    stock_quantity   = wtforms.StringField("stock quantity", validators=[vld.DataRequired()])
-    category=wtforms.StringField("Category:", validators=[vld.DataRequired()])
-    description = wtforms.TextAreaField("description:", validators=[vld.DataRequired()])
-    author_name = wtforms.StringField("author_name:", validators=[vld.DataRequired()])
-    publish_year = wtforms.StringField("publish_year:", validators=[vld.DataRequired()])
-    picture_path = wtforms.StringField("picture_path:", validators=[vld.DataRequired()])
-    submit=wtforms.SubmitField("Submit")
+#    name = wtforms.StringField("Name:", validators=[vld.DataRequired()])
+#    price = wtforms.StringField("Price:", validators=[vld.DataRequired()])
+#    stock_quantity   = wtforms.StringField("stock quantity", validators=[vld.DataRequired()])
+#    category=wtforms.StringField("Category:", validators=[vld.DataRequired()])
+#    description = wtforms.TextAreaField("description:", validators=[vld.DataRequired()])
+#    author_name = wtforms.StringField("author_name:", validators=[vld.DataRequired()])
+#    publish_year = wtforms.StringField("publish_year:", validators=[vld.DataRequired()])
+#    picture_path = wtforms.StringField("picture_path:", validators=[vld.DataRequired()])
+#    submit=wtforms.SubmitField("Submit")
 
 
 class search_user(flask_wtf.FlaskForm):

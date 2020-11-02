@@ -1,0 +1,29 @@
+{% block main %}
+<h1>Books:</h1>
+    <table border='1'>
+        <thead>
+         <tr>
+           <th>Name</th>
+           <th>Price</th>
+             <th>Category</th>
+             <th>Description</th>
+             <th>author_name</th>
+             <th>year</th>
+             <th>picture</th>
+             <th>Add to card</th>
+         </tr>
+        </thead>
+
+  {% for row in rows %}
+    <tr>
+        <td>{{ row.name }}</td>
+        <td>{{ row.price }}</td>
+        <td>{{ row.category }}</td>
+        <td>{{ row.description }}</td>
+        <td>{{ row.author_name }}</td>
+        <td>{{ row.publish_year }}</td>
+        <td><img src="static/imgs/{{ row.picture_path | default('profile.jpg') }}" alt={{ row.name }}></td>
+        <td><a href="/add_order/{{row.id}}"><button type="button">Add to card</button></a></td>
+    </tr>
+    {% endfor %}
+{% endblock %}

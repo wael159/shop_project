@@ -1,0 +1,29 @@
+{% block main %}
+<h1>Books:</h1>
+    <table border='1'>
+        <thead>
+         <tr>
+           <th>Name</th>
+           <th>Price</th>
+             <th>Category</th>
+             <th>Quantity</th>
+             <th>order Id</th>
+             <th>Picture</th>
+
+         </tr>
+        </thead>
+<TBODY>
+  {% for user_book,order in rows %}
+    <tr>
+        <td>{{ user_book.name }}</td>
+        <td>{{ user_book.price }}</td>
+        <td>{{ user_book.category }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.id }}</td>
+        <td><img src="/static/imgs/{{ user_book.picture_path | default('profile.jpg') }}" alt={{ user_book.name }}></td>
+        <td><a href=""><button type="button">Edit order</button></a></td>
+        <td><a href="/delete_order/{{order.id}}}"><button type="button">Delete order</button></a></td>
+    </tr>
+  </TBODY>
+    {% endfor %}
+{% endblock %}
