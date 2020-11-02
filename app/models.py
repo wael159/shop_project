@@ -47,8 +47,11 @@ class User(db.Model, ModelMixin, flask_login.UserMixin): # SQL Table
     email=db.Column(db.String(64)) # ADDED TO DB
     _password_hash    = db.Column(db.String(256))
     is_admin=db.Column(db.BOOLEAN(),default=False)
+
     #new_book=db.relationship('books',backref="new_users")
     new_books = db.relationship('books', secondary=Orders, backref="User")
+
+
     @classmethod
     def login_user(cls, name, pwd):
         user = cls.query.filter_by(name=name).first()
