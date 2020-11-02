@@ -88,7 +88,7 @@
       <!-- end header inner -->
       <!-- end header -->
       <!-- Our  Glasses section -->
-      <div class="glasses">
+<div class="glasses">
          <div class="container">
             <div class="row">
                <div class="col-md-10 offset-md-1">
@@ -100,15 +100,15 @@
                </div>
             </div>
          </div>
-                  <div class="container-fluid">
+         <div class="container-fluid">
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book1.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[0].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description</p>
-    <a href="#" class="btn btn-primary">Add to card</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[0].price}}</h5>
+      <p class="card-text">{{ rows[0].description}}</p>
+    <a href="/add_order/{{ rows[0].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -116,11 +116,11 @@
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book2.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[1].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[1].price}}</h5>
+    <p class="card-text">{{ rows[1].description}}</p>
+    <a href="/add_order/{{ rows[1].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -131,11 +131,11 @@
 
                               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book3.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[2].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description.</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[2].price}}</h5>
+    <p class="card-text">{{ rows[2].description}}</p>
+    <a href="/add_order/{{ rows[2].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -149,11 +149,11 @@
 
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book4.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[3].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description.</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[3].price}}</h5>
+    <p class="card-text">{{ rows[3].description}}</p>
+    <a href="/add_order/{{ rows[3].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -161,11 +161,11 @@
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book5.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[4].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description.</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[4].price}}</h5>
+    <p class="card-text">"{{ rows[4].description}}"</p>
+    <a href="/add_order/{{ rows[4].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -173,11 +173,11 @@
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book6.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[5].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[5].price}}</h5>
+    <p class="card-text">{{ rows[5].description}}</p>
+    <a href="/add_order/{{ rows[5].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -185,11 +185,11 @@
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book7.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[6].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description.</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[6].price}}</h5>
+    <p class="card-text">{{ rows[6].description}}</p>
+    <a href="/add_order/{{ rows[6].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
@@ -197,22 +197,16 @@
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/static/landing_page/images/book8.png" alt="Card image cap">
+  <img class="card-img-top" src="/static/landing_page/images/{{ rows[7].picture_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><span class="blu">$</span>50</h5>
-    <p class="card-text">Description.</p>
-    <a href="#" class="btn btn-primary">Add to card<</a>
+    <h5 class="card-title"><span class="blu">$</span>{{ rows[7].price}}</h5>
+    <p class="card-text">{{ rows[7].description}}</p>
+    <a href="/add_order/{{ rows[7].id}}" class="btn btn-primary">Add to card</a>
   </div>
 </div>
 
 
                </div>
-               <div class="col-md-12">
-                  <a class="read_more" href="#">Read More</a>
-               </div>
-            </div>
-         </div>
-      </div>
                <div class="col-md-12">
                   <a class="read_more" href="#">Read More</a>
                </div>
