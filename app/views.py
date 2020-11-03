@@ -14,6 +14,8 @@ from app.models import  MyModelView
 
 admin.add_view(MyModelView(books, db.session))
 admin.add_view(MyModelView(User, db.session))
+admin.add_view(MyModelView(Orders, db.session))
+
 
 @app.route("/")
 @app.route("/index.html")
@@ -89,7 +91,7 @@ def querys():
             elif value=="id":
                 form_test = list(books.query.filter_by(id=form.value.data).all())
 
-            elif value=="author":
+            elif value=="author_name":
                 form_test = list(books.query.filter_by(author_name=str(form.value.data)).all())
 
             elif value=="publish_year":
