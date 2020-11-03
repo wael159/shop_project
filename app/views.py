@@ -14,7 +14,7 @@ from app.models import  MyModelView
 
 admin.add_view(MyModelView(books, db.session))
 admin.add_view(MyModelView(User, db.session))
-admin.add_view(MyModelView(Orders, db.session))
+#admin.add_view(MyModelView(Orders, db.session))
 
 
 @app.route("/")
@@ -120,16 +120,23 @@ def add_order(id):
     user = User.query.get(flask_login.current_user.id)
     user.new_books.append(book)
     user.save()
-    flash('the book were added successfully')
+    #flash('the book were added successfully')
     return flask.redirect(request.referrer) #TODO we must redirect to the same page
 
 @app.route('/delete_order/<int:id>',methods=["GET", "POST"])
 @flask_login.login_required
 def edit_order(id):
-    order=Orders.query.get(id)
-    order.delete()
-    flash('the book were deleted successfully')
-    return flask.render_template("all_books.html", title="My awesome app", title2="Awesome app") #TODO we must redirect to the same page
+    #order=db.session.query(Orders).query.filter_by(order_id=id)
+    #order.delete()
+   # try:
+    num_rows_deleted = db.session.query(Orders).filter(Orders.c.id==id).first()
+    db.session.delete(num_rows_deleted)
+    db.session.commit()
+    print(num_rows_deleted)
+    #except:
+       # db.session.rollback()
+    #flash('the book were deleted successfully')
+    return flask.redirect(request.referrer) #TODO we must redirect to the same page
 
 
 
