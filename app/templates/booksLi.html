@@ -37,7 +37,7 @@
       </div>
       <!-- end loader -->
       <!-- header -->
-      <header>
+            <header>
          <!-- header inner -->
          <div class="header">
             <div class="container-fluid">
@@ -56,7 +56,7 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
-                       <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
                                  <a class="nav-link" href="{{ url_for('index') }}">Home</a>
@@ -65,15 +65,31 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="booksLi.html">Our Books</a>
                               </li>
+                               {% if current_user.is_authenticated %}
+                               <li class="nav-item d_none">
+                                 <a class="nav-link" href="search">Search book</a>
+                              </li>
+
                               <li class="nav-item">
                                  <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
                               </li>
+                                   <li class="nav-item">
+                                 <a class="nav-link" href="\card_items\{{current_user.id}}">My Cart</a>
+                              </li>
+                                   <li class="nav-item">
+                                 <a class="nav-link" href="\signout">Sign out</a>
+                              </li>
+                                <li class="nav-item">
+                                 <a class="nav-link disabled" >Welcome {{ current_user.name }} !</a>
+                              </li>
+                               {% else %}
                               <li class="nav-item d_none login_btn">
                                  <a class="nav-link" href="{{ url_for('signin') }}">Login</a>
                               </li>
                               <li class="nav-item d_none">
                                  <a class="nav-link" href="{{ url_for('signup') }}">Register</a>
                               </li>
+                               {% endif %}
                               <li class="nav-item d_none sea_icon">
                                  <a class="nav-link" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
