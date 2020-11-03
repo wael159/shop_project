@@ -92,9 +92,9 @@ def querys():
             elif value=="author":
                 form_test = list(books.query.filter_by(author_name=str(form.value.data)).all())
 
-            elif value=="year":
-                form_test = list(books.query.filter_by(publish_year=form.value.data).all())
-            return flask.render_template("bookList.html", rows=form_test)
+            elif value=="publish_year":
+                form_test = list(books.query.filter_by(publish_year=str(form.value.data)).all())
+            return flask.render_template("results.html", rows=form_test)
 
         else:
             print("Form errors:", form.errors)
